@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Tarea Maria Paz Canciones</title>
+	</head>
+	<body>
+		<div class='titulo'>
+			<h1>Bienvenido</h1>
+		</div>
+		<div>
+			<h1 class= 'subtitulo'>Mejores 5 canciones</h1>
+		</div>
+
+		<ul id="canciones">
+			
+		</ul>
+
+		<!-- jQuery -->
+		<script src="//code.jquery.com/jquery.js"></script>
+
+		<script>
+			$(function() {
+				$.get('/api/top5', function(data) {
+					$('#canciones').empty();
+					$.each(data, function(i, item) {
+						$('#canciones').append('<a href="/api/cancionesxartista?artista=' +item.artista+ '"><li>' + item.cancion + ' - ' + item.artista + '</li></a>');
+					});
+				});
+			});
+		</script>
+	</body>
+</html>
